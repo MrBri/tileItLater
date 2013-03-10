@@ -23,17 +23,17 @@
 		</form>
 	</div>
 </div>
+<div class="row-fluid tiles">
+	<div class="span2 tile" ng-repeat="tile in master">
+		<span>url: {{tile.url}}</span><br>
+		<span>Remind on: {{tile.remind | date:'medium'}}</span>
+	</div>
+</div>
 <div class="row-fluid">
 	<div class="span3 offset4 text-center">
 		<p>Your tile: {{tile | json}}</p>
 		<p>Date: {{tile.remind | date:'medium'}}</p>
 		<p>Master: {{master | json}}</p>
-	</div>
-</div>
-<div class="row-fluid tiles">
-	<div class="span2 tile" ng-repeat="tile in master">
-		<span>url: {{tile.url}}</span><br>
-		<span>Remind on: {{tile.remind | date:'medium'}}</span>
 	</div>
 </div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
