@@ -1,0 +1,16 @@
+{
+  "name": "tileItLater",
+  "version": "0.0.1",
+  "description": "Add a website as a tile to be reminded about later.",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrBri/tileItLater.git"
+  },
+  "author": "Tyler Briles",
+  "license": "BSD",
+  "gitHead": "cdf55ea35182e43c485e2527ecf263ab9aa20de7"
+}
