@@ -1,6 +1,10 @@
 {
   "name": "tileItLater",
   "version": "0.0.1",
+  "engines": {
+    "node": "0.8.21",
+    "npm": "1.2.12"
+  },
   "description": "Add a website as a tile to be reminded about later.",
   "main": "web.js",
   "scripts": {
