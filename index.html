@@ -11,20 +11,20 @@
 	<div class='span4 offset4 text-center'>
 		<form action="" class="form-search">
 				<h3>Paste in a URL to tile</h3>
-		 		<input type="text"  name="url" size="40" class="url input-xlarge search-query" value="http://www.example.com" placeholder="example.com" ng-model="url">	
+				<input type="text"  name="url" size="40" class="url input-xlarge search-query" placeholder="example.com" ng-model="tile.url">
 		 		<div class="remind-group">
 			 		<span class="label label-inverse">Remind in</span>
 			 		<div class="btn-rmd btn-group" data-toggle="buttons-radio">
-			 			<button class="btn btn-primary">1 Hour</button>
-			 			<button class="btn btn-primary">1 Day</button>
-			 			<button class="btn btn-primary">1 Week</button>
+						<button value="3600000" class="btn btn-primary" ng-click="setRmd(3600000)">1 Hour</button>
+						<button value="86400000" class="btn btn-primary" ng-click="setRmd(86400000)">1 Day</button>
+						<button value="604800000" class="btn btn-primary" ng-click="setRmd(604800000)">1 Week</button>
 			 		</div>
 		 		</div>
 		</form>
 	</div>
 	<div class="row-fluid">
 		<div class="span3 offset4 text-center">
-			<p>Your url: {{url}}</p>
+			<p>Your tile: {{tile | json}}</p>
 		</div>
 	</div>
 </div>

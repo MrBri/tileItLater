@@ -1,4 +1,7 @@
 
 var urlCtrl = function($scope) {
-	$scope.url;
+	$scope.master = [];
+	$scope.setRmd = function(milli){
+		$scope.tile.remind = Date.now() + milli;
+	};
 };
