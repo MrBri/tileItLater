@@ -8,13 +8,13 @@ input[type="text"] {
 .remind-group {
 	margin-top: .5em;
 }
-.tiles {
+div.tiles {
 	border: 1px solid #666;
 	padding: 5px;
 	margin-bottom: 20px;
 }
 
-.tile {
+div.tile {
 	width: 110px;
   height: 110px;
   margin: 5px;
@@ -28,22 +28,10 @@ input[type="text"] {
           border-top-right-radius: 1.2em;
 }
 
-
-/**** Isotope Filtering ****/
-
-.isotope-item {
-  z-index: 2;
-}
-
-.isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1;
-}
-
 /**** Isotope CSS3 transitions ****/
 
-.isotope,
-.isotope .isotope-item {
+.tiles,
+.tiles .tile {
   -webkit-transition-duration: 0.8s;
      -moz-transition-duration: 0.8s;
       -ms-transition-duration: 0.8s;
@@ -51,7 +39,7 @@ input[type="text"] {
           transition-duration: 0.8s;
 }
 
-.isotope {
+.tiles {
   -webkit-transition-property: height, width;
      -moz-transition-property: height, width;
       -ms-transition-property: height, width;
@@ -59,7 +47,7 @@ input[type="text"] {
           transition-property: height, width;
 }
 
-.isotope .isotope-item {
+.tiles .tile {
   -webkit-transition-property: -webkit-transform, opacity;
      -moz-transition-property:    -moz-transform, opacity;
       -ms-transition-property:     -ms-transform, opacity;
@@ -67,14 +55,3 @@ input[type="text"] {
           transition-property:         transform, opacity;
 }
 
-/**** disabling Isotope CSS3 transitions ****/
-
-.isotope.no-transition,
-.isotope.no-transition .isotope-item,
-.isotope .isotope-item.no-transition {
-  -webkit-transition-duration: 0s;
-     -moz-transition-duration: 0s;
-      -ms-transition-duration: 0s;
-       -o-transition-duration: 0s;
-          transition-duration: 0s;
-}
