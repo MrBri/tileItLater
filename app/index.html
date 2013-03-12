@@ -7,11 +7,11 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="/socket.io/socket.io.js"></script>
 	<script>
-		var server = io.connect("http://localhost:3000");
+		var socket = io.connect("http://localhost:3000");
 
-		server.on('message', function(data) {
+		socket.on('message', function(data) {
 			alert(data.hello);
-		})
+		});
 
 	</script>
 </head>
