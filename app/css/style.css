@@ -9,15 +9,15 @@ input[type="text"] {
 	margin-top: .5em;
 }
 div.tiles {
-	border: 1px solid #666;
-	padding: 5px;
+	padding: 15px;
+  padding-left: 50px;
 	margin-bottom: 20px;
 }
 
 div.tile {
 	width: 155px;
   height: 155px;
-  margin: 5px;
+  margin: 8px;
   float: left;
   overflow: hidden;
   position: relative;
@@ -26,6 +26,13 @@ div.tile {
   -webkit-border-top-right-radius: 1.2em;
       -moz-border-radius-topright: 1.2em;
           border-top-right-radius: 1.2em;
+}
+
+.tip {
+  position: absolute;
+  bottom: 2px;
+  left: 4px;
+  color: white;
 }
 
 /**** Isotope CSS3 transitions ****/

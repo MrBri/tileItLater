@@ -1,13 +1,18 @@
 var fs = require('fs'),
 		webshot = require('webshot'),
 		gm = require('gm'),
-		connect = require('connect'),
-    socketio = require('socket.io');
+		express = require('express'),
+		app = express(),
+		server = require('http').createServer(app),
+		io = require('socket.io').listen(server);
 
-var port = process.env.PORT || 3000;
-var server = connect(
-  connect.static(__dirname + '/app')
-).listen(port);
+server.listen(process.env.PORT || 3000);
+
+app.use(express.static(__dirname + '/app'));
+
+app.get('/img/:name', function(req, res){
+	res.sendfile(__dirname + '/img/' + req.params.name);
+});
 
 var webshotOptions = {
   screenSize: {
@@ -21,7 +26,6 @@ var webshotOptions = {
   userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
 };
 
-var io = socketio.listen(server);
 io.sockets.on('connection', function(client){
 	console.log('Client connected...');
 
