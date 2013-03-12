@@ -15,8 +15,8 @@ div.tiles {
 }
 
 div.tile {
-	width: 110px;
-  height: 110px;
+	width: 155px;
+  height: 155px;
   margin: 5px;
   float: left;
   overflow: hidden;

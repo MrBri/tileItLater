@@ -1,31 +1,21 @@
-// angular.module('urlApp', [])
-// 	.directive('isotope', function() {
-// 		return function(scope,element,attrs){
-// 			element.isotope({itemSelector:'.tile', resizesContainer:false});
-// 			scope.$watch(attrs.ngModel, function() {
-// 				element.isotope( 'reloadItems' );
-// 			});
-// 		};
-// 	});
-
 var urlCtrl = function($scope) {
 	$scope.master = [];
 
-	// $scope.capture = function(tile) {
-	// 	socket.emit('capture', tile.url);
-	// 	console.log('Url in capture: ', tile.url);
-	// };
-
 	$scope.setRmd = function(milli){
 		$scope.tile.remind = Date.now() + milli;
+		$scope.tile.cl = $scope.tile.url.slice(0, 4);
+
 		socket.emit('capture', $scope.tile.url);
+
 		$scope.master.push(angular.copy($scope.tile));
+		};
 
-		// $('.tiles').isotope( 'insert', $scope.master.slice(-1) );
-	};
+	socket.on('resized', function (url) {
+		var tileClass = '.' + url.slice(6, 10);
+		var imgLocal = 'url(../.' + url + ')';
 
+		$(tileClass).css('background-image', imgLocal);
+		console.log('bg img:', imgLocal); 
+	});
 };
 
-// $('.tiles').isotope({
-// 	itemSelector: '.tile'
-// });
