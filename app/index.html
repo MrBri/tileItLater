@@ -6,9 +6,6 @@
 	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="/socket.io/socket.io.js"></script>
-	<script>
-		var socket = io.connect("http://localhost:3000");
-	</script>
 </head>
 <body ng-controller="urlCtrl">
 
@@ -35,15 +32,15 @@
 </div>
 
 <div class="row tiles clearfix">
-	<div class="span2 tile" ng-repeat="tile in master" ng-class="tile.cl" >
-			<span class="tip">Remind on: {{tile.remind | date:'medium'}}</span>
-	</div>
+	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile" ng-repeat="tile in master" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}">
+	</a>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>

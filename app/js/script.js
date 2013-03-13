@@ -1,3 +1,5 @@
+var socket = io.connect("http://localhost:3000");
+
 var urlCtrl = function($scope) {
 	$scope.master = [];
 
@@ -11,6 +13,8 @@ var urlCtrl = function($scope) {
 		};
 
 	socket.on('resized', function (url) {
+		$('.tile').popover({trigger: 'hover', placement: 'top', title: $scope.tile.url}); //bootstrap
+
 		var tileClass = '.' + url.slice(6, 10);
 		var imgLocal = 'url(../.' + url + ')';
 

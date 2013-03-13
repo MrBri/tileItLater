@@ -1,20 +1,24 @@
 body {
 	background-image: url("../assets/shattered.png");
 }
+
 input[type="text"] {
 	font-size: 1.5em;
 	height: 1.5em;
 }
+
 .remind-group {
 	margin-top: .5em;
 }
-div.tiles {
+
+.tiles {
 	padding: 15px;
   padding-left: 50px;
 	margin-bottom: 20px;
 }
 
-div.tile {
+.tile {
+  display: block;
 	width: 155px;
   height: 155px;
   margin: 8px;
@@ -22,7 +26,6 @@ div.tile {
   overflow: hidden;
   position: relative;
   background: #888;
-  color: #222;
   -webkit-border-top-right-radius: 1.2em;
       -moz-border-radius-topright: 1.2em;
           border-top-right-radius: 1.2em;
@@ -37,7 +40,7 @@ div.tile {
 
 /**** Isotope CSS3 transitions ****/
 
-.tiles,
+/*.tiles,
 .tiles .tile {
   -webkit-transition-duration: 0.8s;
      -moz-transition-duration: 0.8s;
@@ -62,3 +65,4 @@ div.tile {
           transition-property:         transform, opacity;
 }
 
+*/
