@@ -2,6 +2,10 @@ body {
 	background-image: url("../assets/shattered.png");
 }
 
+.header {
+  margin: 30px 0;
+}
+
 input[type="text"] {
 	font-size: 1.5em;
 	height: 1.5em;
@@ -9,6 +13,10 @@ input[type="text"] {
 
 .remind-group {
 	margin-top: .5em;
+}
+
+img.screenshot {
+  display: none;
 }
 
 .tiles {
@@ -19,16 +27,24 @@ input[type="text"] {
 
 .tile {
   display: block;
-	width: 155px;
+  width: 155px;
   height: 155px;
   margin: 8px;
   float: left;
   overflow: hidden;
   position: relative;
-  background: #888;
+}
+
+.right-radi {
   -webkit-border-top-right-radius: 1.2em;
       -moz-border-radius-topright: 1.2em;
           border-top-right-radius: 1.2em;
+}
+
+.spin {
+  background: #888;
+  width: 155px;
+  height: 155px;
 }
 
 .tip {
@@ -37,6 +53,7 @@ input[type="text"] {
   left: 4px;
   color: white;
 }
+
 
 /**** Isotope CSS3 transitions ****/
 

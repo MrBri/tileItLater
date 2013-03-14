@@ -9,30 +9,35 @@
 </head>
 <body ng-controller="urlCtrl">
 
+<div class="row text-center header">
+	<h1>Tile It Later <br><small>A bookmarking site to remind you later</small></h1>
+</div>
+
 <div class="row">
 	<div class='span4 offset5 text-center'>
 
 		<form action="" class="form-search">
 
-				<h3>Paste in a URL to tile</h3>
 
-				<input type="text"  name="url" size="40" class="url input-xlarge search-query" placeholder="example.com" ng-model="tile.url">
+			<input type="text"  name="url" size="40" class="url input-xlarge search-query" placeholder="example.com" ng-model="tile.url">
 
-		 		<div class="remind-group">
-			 		<span class="label label-inverse">Remind in</span>
-			 		<div class="btn-rmd btn-group" data-toggle="buttons-radio">
-						<button class="btn btn-primary" ng-click="setRmd(3600000)">1 Hour</button>
-						<button class="btn btn-primary" ng-click="setRmd(86400000)">1 Day</button>
-						<button class="btn btn-primary" ng-click="setRmd(604800000)">1 Week</button>
-			 		</div>
+	 		<div class="remind-group">
+		 		<span class="label label-inverse">Remind in</span>
+		 		<div class="btn-rmd btn-group" data-toggle="buttons-radio">
+					<button class="btn btn-primary" ng-click="setRmd(3600000)">1 Hour</button>
+					<button class="btn btn-primary" ng-click="setRmd(86400000)">1 Day</button>
+					<button class="btn btn-primary" ng-click="setRmd(604800000)">1 Week</button>
 		 		</div>
+	 		</div>
 
 		</form>
 	</div>
 </div>
 
 <div class="row tiles clearfix">
-	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile" ng-repeat="tile in master" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}">
+	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile right-radi" ng-repeat="tile in master" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}">
+		<div class="spin"></div>
+		<img class='screenshot right-radi' height='155px' width='155px' src="" alt="">	
 	</a>
 </div>
 
@@ -41,6 +46,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+<script src="js/spin.min.js"></script>
 <script src="js/script.js"></script>
 </body>
 </html>
