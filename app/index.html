@@ -10,15 +10,12 @@
 <body ng-controller="urlCtrl">
 
 <div class="row text-center header">
-	<h1>Tile It Later <br><small>A bookmarking site to remind you later</small></h1>
+		<h1>Tile It... Later <br><small>A bookmarking site to remind</small></h1>
 </div>
 
-<div class="row">
-	<div class='span4 offset5 text-center'>
+<div class="row text-center">
 
 		<form action="" class="form-search">
-
-
 			<input type="text"  name="url" size="40" class="url input-xlarge search-query" placeholder="example.com" ng-model="tile.url">
 
 	 		<div class="remind-group">
@@ -29,19 +26,18 @@
 					<button class="btn btn-primary" ng-click="setRmd(604800000)">1 Week</button>
 		 		</div>
 	 		</div>
-
 		</form>
-	</div>
 </div>
 
 <div class="row tiles clearfix">
-	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile right-radi" ng-repeat="tile in master" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}">
+	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile right-radi" ng-repeat="tile in master" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}" ng-click="reset(tile.cl)">
 		<div class="spin"></div>
 		<img class='screenshot right-radi' height='155px' width='155px' src="" alt="">	
 	</a>
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.1/jquery-ui.min.js"></script>
 <script src="js/jquery.isotope.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>

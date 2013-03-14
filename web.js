@@ -1,7 +1,7 @@
 var fs = require('fs'),
-		$ = require('jquery'),
+		// $ = require('jquery'),
 		phantom = require('node-phantom'),
-		webshot = require('webshot'),
+		// webshot = require('webshot'),
 		gm = require('gm'),
 		express = require('express'),
 		app = express(),
@@ -26,48 +26,47 @@ io.sockets.on('connection', function(client){
 		var imgPath = './img/' + url + '.png';
 
 		phantom.create(function(err, ph){
-			return ph.createPage(function(err, page) {
-				return page.open('http://' + url, function(err, status) {
-					console.log("opened site?", status);
+			 ph.createPage(function(err, page) {
+					page.set('viewportSize', {width:60, height:60}, function(err){
 
-						page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function(err) {
-							console.log('jQuery included..');
-							if ( err ) throw err;
-							page.render(imgPath, function(err) {
-								if ( err ) throw err;
-								console.log('Taking webshot..');
+						page.open('http://' + url, function(err, status) {
+							console.log("opened site?", status);
 
-								var imgOut = './img/' + url + '-resized.png';
-								pageObj.imgOut = imgOut;
+								page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function(err) {
+									console.log('jQuery included..');
+									if ( err ) throw err;
+									page.render(imgPath, function(err) {
+										if ( err ) throw err;
+										console.log('Taking webshot..');
 
-								gm(fs.createReadStream(imgPath), url + '.png').resize(155, 155).write(imgOut, function (err) {
-									if (err) throw err;
-									console.log('Resized from buffer.', pageObj);
+										var imgOut = './img/' + url + '-resized.png';
+										pageObj.imgOut = imgOut;
 
-									client.emit('resized', pageObj);
+										gm(fs.createReadStream(imgPath), url + '.png').scale(155, 155).write(imgOut, function (err) {
+											if (err) throw err;
+											console.log('Resized from buffer.', pageObj);
+
+											client.emit('resized', pageObj);
+										});
+									});
+
+									// Eval not working
+									
+									// setTimeout(function(){
+									// 	console.log('setTimeout started');
+									// 	return page.evaluate(function(){
+									// 		console.log('Start of eval');
+									// 		pageObj.desc = $('meta[name="description"]').attr('content');
+									// 		console.log('Grab description: ', pageObj);
+									// 	});
+									// }, 600);
 								});
+							ph.exit();
 							});
-
-							// Eval not working
-							
-							// setTimeout(function(){
-							// 	console.log('setTimeout started');
-							// 	return page.evaluate(function(){
-							// 		console.log('Start of eval');
-							// 		pageObj.desc = $('meta[name="description"]').attr('content');
-							// 		console.log('Grab description: ', pageObj);
-							// 	});
-							// }, 600);
 						});
-
-
-					ph.exit();
 					});
-				});
 			});
 		});
-
-
 		// webshot(url, imgPath, webshotOptions, function(err) {
 		// });
 });

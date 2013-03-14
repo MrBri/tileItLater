@@ -17,7 +17,7 @@ $.fn.spin = function(opts) {
   return this;
 };
 
-$('.spin').spin();
+$('.spin').spin({color: 'white'});
 
 var urlCtrl = function($scope) {
 	$scope.master = [];
@@ -30,7 +30,21 @@ var urlCtrl = function($scope) {
 		socket.emit('capture', $scope.tile.url);
 
 		$scope.master.push(angular.copy($scope.tile));
-		};
+		setTimeout($scope.emphasize, 5000, $scope.tile.cl);
+	};
+
+	$scope.emphasize = function(elm){
+		$('.' + elm).effect({effect: 'bounce', duration: 1200, complete: function(){
+			$this = $(this);
+			setTimeout(function(){
+				$this.addClass('scale');
+			}, 2000);
+		}});
+	};
+
+	$scope.reset = function(elm) {
+		$('.' + elm).removeClass('scale');	
+	};
 
 	socket.on('resized', function (pageObj) {
 		$('.tile').popover({trigger: 'hover', placement: 'top', title: $scope.tile.url}); //bootstrap

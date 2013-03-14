@@ -17,6 +17,8 @@ input[type="text"] {
 
 img.screenshot {
   display: none;
+  width: 155px;
+  height: 155px;
 }
 
 .tiles {
@@ -53,6 +55,15 @@ img.screenshot {
   left: 4px;
   color: white;
 }
+
+.scale {
+  transform:  scale(1.5, 1.5);
+  -webkit-transform:  scale(1.5, 1.5);
+  -moz-transform: scale(1.5, 1.5);
+  -o-transform:  scale(1.5, 1.5);
+  -ms-transform:  scale(1.5, 1.5);
+}
+
 
 
 /**** Isotope CSS3 transitions ****/
