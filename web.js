@@ -41,6 +41,7 @@ io.sockets.on('connection', function(client){
       if ( err ) throw err;
       console.log('Taking webshot..');
 
+      pageObj.url = url;
       pageObj.imgOut = './img/' + url + '-resized.png';
 
       gm(fs.createReadStream(imgPath), url + '.png').resize(155, 155).write(pageObj.imgOut, function (err) {

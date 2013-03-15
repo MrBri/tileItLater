@@ -19,18 +19,18 @@
 			<input type="text"  name="url" size="40" class="url input-xlarge search-query" placeholder="example.com" ng-model="tile.url">
 
 	 		<div class="remind-group">
-		 		<span class="label label-inverse">Remind in</span>
+				<span class="label label-inverse"><i class="icon-bell icon-white"></i> Remind in </span>
 		 		<div class="btn-rmd btn-group" data-toggle="buttons-radio">
-					<button class="btn btn-primary" ng-click="setRmd(5000)">1 Hour</button> // 3600000
-					<button class="btn btn-primary" ng-click="setRmd(10000)">1 Day</button> // 86400000
-					<button class="btn btn-primary" ng-click="setRmd(30000)">1 Week</button> // 604800000
+					<button class="btn btn-primary" ng-click="setRmd(5000); predicate = 'remind'; reverse=false">1 Hour</button> // 3600000
+					<button class="btn btn-primary" ng-click="setRmd(10000); predicate = 'remind'; reverse=false">1 Day</button> // 86400000
+					<button class="btn btn-primary" ng-click="setRmd(30000); predicate = 'remind'; reverse=false">1 Week</button> // 604800000
 		 		</div>
 	 		</div>
 		</form>
 </div>
 
 <div class="row tiles clearfix">
-	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile right-radi" ng-repeat="tile in master" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}" ng-click="reset(tile.cl)">
+	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile right-radi" ng-repeat="tile in master | orderBy:predicate:reverse" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}" ng-click="reset(tile.cl)">
 		<div class="spin"></div>
 		<img class='screenshot right-radi' height='155px' width='155px' src="" alt="">	
 	</a>

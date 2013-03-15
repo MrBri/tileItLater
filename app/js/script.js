@@ -40,6 +40,7 @@ var urlCtrl = function($scope) {
 				$this.addClass('scale');
 			}, 2000);
 		}});
+		$scope.predicate = 'remind';
 	};
 
 	$scope.reset = function(elm) {
@@ -47,7 +48,7 @@ var urlCtrl = function($scope) {
 	};
 
 	socket.on('resized', function (pageObj) {
-		$('.tile').popover({trigger: 'hover', placement: 'top', title: $scope.tile.url}); //bootstrap
+		$('.tile').popover({trigger: 'hover', placement: 'top', title: pageObj.url}); //bootstrap
 
 		var tileClass = '.' + pageObj.imgOut.slice(6, 10);
 		var imgLocal = '../.' + pageObj.imgOut;
