@@ -62,3 +62,7 @@ img.screenshot {
        -o-transform:  scale(1.1, 1.1);
           transform:  scale(1.1, 1.1);
 }
+
+i.icon-muted {
+  color: #bfbfbf;
+}

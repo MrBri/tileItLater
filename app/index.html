@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Tile it... For later</title>
 	<link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="/socket.io/socket.io.js"></script>
 </head>
@@ -19,11 +20,11 @@
 			<input type="text"  name="url" size="40" class="url input-xlarge search-query" placeholder="example.com" ng-model="tile.url">
 
 	 		<div class="remind-group">
-				<span class="label label-inverse"><i class="icon-bell icon-white"></i> Remind in </span>
+				<span class="label label-inverse"><i class="icon-bell-alt icon-white"></i> Remind in </span>
 		 		<div class="btn-rmd btn-group" data-toggle="buttons-radio">
-					<button class="btn btn-primary" ng-click="setRmd(5000); predicate = 'remind'; reverse=false">1 Hour</button> // 3600000
-					<button class="btn btn-primary" ng-click="setRmd(10000); predicate = 'remind'; reverse=false">1 Day</button> // 86400000
-					<button class="btn btn-primary" ng-click="setRmd(30000); predicate = 'remind'; reverse=false">1 Week</button> // 604800000
+					<button class="btn btn-primary" ng-click="setRmd(5000); predicate = 'remind'; reverse=false">Hour</button> // 3600000
+					<button class="btn btn-primary" ng-click="setRmd(10000); predicate = 'remind'; reverse=false">Day</button> // 86400000
+					<button class="btn btn-primary" ng-click="setRmd(30000); predicate = 'remind'; reverse=false">Week</button> // 604800000
 		 		</div>
 	 		</div>
 		</form>
@@ -31,8 +32,8 @@
 
 <div class="row text-center">
 	<blockquote>
-		<p>&ldquo;You know how you always have a million tabs open? Use this instead.&rdquo;</p>
-		<a href="https://github.com/mrbri"><small>Tyler Briles</small></a>
+		<p><i class="icon-quote-left icon-muted"></i> You know how you always have a million tabs open? Use this instead.<i class="icon-quote-right icon-muted"></i></p>
+		<a href="https://github.com/mrbri"><small>Tyler Briles <i class="icon-github-alt"></i></small></a>
 	</blockquote>
 </div>
 
@@ -48,7 +49,6 @@
 <script src="js/jquery.isotope.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular.min.js"></script>
 <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
 <script src="js/spin.min.js"></script>
 <script src="js/script.js"></script>
 </body>
