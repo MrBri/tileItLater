@@ -1,6 +1,10 @@
 var socket = io.connect("http://localhost:3000");
 
-// spinner to be used as jQuery
+$(window).load(function(){
+  $('#myModal').modal('show');
+});
+
+// spinner.js to be used as jQuery
 $.fn.spin = function(opts) {
   this.each(function() {
     var $this = $(this),
@@ -44,7 +48,7 @@ var urlCtrl = function($scope) {
 	};
 
 	$scope.reset = function(elm) {
-		$('.' + elm).removeClass('scale');	
+		$('.' + elm).removeClass('scale');
 	};
 
 	socket.on('resized', function (pageObj) {
@@ -55,7 +59,7 @@ var urlCtrl = function($scope) {
 
 		$(tileClass + '>img').css('display', 'inline').attr('src', imgLocal);
 		$('.spin').hide();
-		console.log('bg img:', imgLocal); 
+		console.log('bg img:', imgLocal);
 	});
 };
 

@@ -1,35 +1,35 @@
 var fs = require('fs'),
-		// phantom = require('node-phantom'),
-		webshot = require('webshot'),
-		gm = require('gm'),
-		express = require('express'),
-		app = express(),
-		server = require('http').createServer(app),
-		io = require('socket.io').listen(server);
+    phantomProxy = require('phantom-proxy'),
+    webshot = require('webshot'),
+    gm = require('gm'),
+    express = require('express'),
+    app = express(),
+    server = require('http').createServer(app),
+    io = require('socket.io').listen(server);
 
 server.listen(process.env.PORT || 3000);
 
 app.use(express.static(__dirname + '/app'));
 
 app.get('/img/:name', function(req, res){
-	res.sendfile(__dirname + '/img/' + req.params.name);
+  res.sendfile(__dirname + '/img/' + req.params.name);
 });
 
 io.sockets.on('connection', function(client){
-	console.log('Client connected...');
+  console.log('Client connected...');
 
-	client.on('capture', function (url) {
-		console.log("On capture ", url);
+  client.on('capture', function (url) {
+    console.log("On capture ", url);
 
-		var webshotOptions = {
-		  screenSize: {	width: 620, height: 620 },
-		  shotSize: { width: 620, height: '620' }
-		};
+    var webshotOptions = {
+      screenSize: { width: 620, height: 620 },
+      shotSize: { width: 620, height: '620' }
+    };
 
-		var pageObj = {};
-		var imgPath = './img/' + url + '.png';
+    var pageObj = {};
+    var imgPath = './img/' + url + '.png';
 
-		webshot(url, imgPath, webshotOptions, function(err) {
+    webshot(url, imgPath, webshotOptions, function(err) {
       if ( err ) throw err;
       console.log('Taking webshot..');
 
@@ -44,48 +44,41 @@ io.sockets.on('connection', function(client){
        });
     });
 
-		// phantom.create(function(err, ph){
-		// 	 ph.createPage(function(err, page) {
-		// 			page.get('viewportSize', function(err, value) {
-		// 				console.log('viewportSize: ', value);
-		// 				page.set('viewportSize', {width:310,height:310}, function(err) {
-		// 					console.log(value);
+    // Attempt at grabbing page description
 
-		// 					page.open('http://' + url, function(err, status) {
-		// 						console.log("opened site?", status);
+    // phantomProxy.create({'loadImages': 'no'}, function (proxy) {
+    //   var page = proxy.page;
+    //   page.open('http://' + url, function(result) {
+    //     console.log("phantomProxy: ", result);
+    //     page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function(){
+    //       page.evaluate(function(){
+    //         var href = $('#fork-me').attr('href');
+    //         console.log('test eval', href);
+    //       });
+    //         proxy.end(function () {
+    //           console.log('phantomProxy done.');
+    //         });
+    //     });
+    //       // page.evaluate(function () {
+    //       //   var metas = document.getElementsByTagName('meta');
+    //       //   console.log('metas', metas);
+    //       //   return metas;
+    //       // }, function (result) {
+    //       //   console.log('evaluate: ', result);
+    //       // });
+    //     // page.waitForSelector('body', function (result) {
+    //     //   console.log('body tag present', result);
+    //     //   // for (var i = 0; i < metas.length; i++) {
+    //     //   //   var name = metas[i].getAttribute('name');
+    //     //   //   if ( name === 'desciption' ) {
+    //     //   //     console.log('Name desc: ', meta[i]);
+    //     //   //   } else {
+    //     //   //     console.log('No desc');
+    //     //   //   }
+    //     //   // }
+    //     // });
+    //   });
+    // });
 
-		// 							page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function(err) {
-		// 								console.log('jQuery included..');
-		// 								if ( err ) throw err;
-		// 								page.render(imgPath, function(err) {
-		// 									if ( err ) throw err;
-		// 									console.log('Taking webshot..');
-
-		// 									var imgOut = './img/' + url + '-resized.png';
-		// 									pageObj.imgOut = imgOut;
-
-		// 									gm(fs.createReadStream(imgPath), url + '.png').scale(155, 155).write(imgOut, function (err) {
-		// 										if (err) throw err;
-		// 										console.log('Resized from buffer.', pageObj);
-
-		// 										client.emit('resized', pageObj);
-		// 									});
-		// 								});
-		// 								// Eval not working
-		// 								// setTimeout(function(){
-		// 								// 	console.log('setTimeout started');
-		// 								// 	return page.evaluate(function(){
-		// 								// 		console.log('Start of eval');
-		// 								// 		pageObj.desc = $('meta[name="description"]').attr('content');
-		// 								// 		console.log('Grab description: ', pageObj);
-		// 								// 	});
-		// 								// }, 600);
-		// 						});
-		// 						ph.exit();
-		// 					});
-		// 				});
-		// 			});
-		// 		});
-		// 	});
-	});
+  });
 });
