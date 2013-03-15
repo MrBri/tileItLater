@@ -29,6 +29,13 @@
 		</form>
 </div>
 
+<div class="row text-center">
+	<blockquote>
+		<p>&ldquo;You know how you always have a million tabs open? Use this instead.&rdquo;</p>
+		<a href="https://github.com/mrbri"><small>Tyler Briles</small></a>
+	</blockquote>
+</div>
+
 <div class="row tiles clearfix">
 	<a href="{{'http://' + tile.url}}" target=_blank class="span2 tile right-radi" ng-repeat="tile in master | orderBy:predicate:reverse" ng-class="tile.cl" data-toggle="popover" data-content="Remind on: {{tile.remind | date:'medium'}}" ng-click="reset(tile.cl)">
 		<div class="spin"></div>
