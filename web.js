@@ -1,7 +1,7 @@
 var fs = require('fs'),
 		// $ = require('jquery'),
-		phantom = require('node-phantom'),
-		// webshot = require('webshot'),
+		// phantom = require('node-phantom'),
+		webshot = require('webshot'),
 		gm = require('gm'),
 		express = require('express'),
 		app = express(),
@@ -20,53 +20,79 @@ io.sockets.on('connection', function(client){
 	console.log('Client connected...');
 
 	client.on('capture', function (url) {
-		console.log("On web.js", url);
+		console.log("On capture ", url);
+
+		var webshotOptions = {
+		  screenSize: {
+		    width: 620,
+		    height: 620
+		  },
+		  shotSize: {
+		    width: 620,
+		    height: '620'
+		  }
+		  // userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+		};
 
 		var pageObj = {};
 		var imgPath = './img/' + url + '.png';
 
-		phantom.create(function(err, ph){
-			 ph.createPage(function(err, page) {
-					page.set('viewportSize', {width:60, height:60}, function(err){
+		webshot(url, imgPath, webshotOptions, function(err) {
+      if ( err ) throw err;
+      console.log('Taking webshot..');
 
-						page.open('http://' + url, function(err, status) {
-							console.log("opened site?", status);
+      pageObj.imgOut = './img/' + url + '-resized.png';
 
-								page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function(err) {
-									console.log('jQuery included..');
-									if ( err ) throw err;
-									page.render(imgPath, function(err) {
-										if ( err ) throw err;
-										console.log('Taking webshot..');
+      gm(fs.createReadStream(imgPath), url + '.png').resize(155, 155).write(pageObj.imgOut, function (err) {
+        if (err) throw err;
+        console.log('Resized from buffer.', pageObj);
 
-										var imgOut = './img/' + url + '-resized.png';
-										pageObj.imgOut = imgOut;
+        client.emit('resized', pageObj);
+       });
+    });
 
-										gm(fs.createReadStream(imgPath), url + '.png').scale(155, 155).write(imgOut, function (err) {
-											if (err) throw err;
-											console.log('Resized from buffer.', pageObj);
+		// phantom.create(function(err, ph){
+		// 	 ph.createPage(function(err, page) {
+		// 			page.get('viewportSize', function(err, value) {
+		// 				console.log('viewportSize: ', value);
+		// 				page.set('viewportSize', {width:310,height:310}, function(err) {
+		// 					console.log(value);
 
-											client.emit('resized', pageObj);
-										});
-									});
+		// 					page.open('http://' + url, function(err, status) {
+		// 						console.log("opened site?", status);
 
-									// Eval not working
-									
-									// setTimeout(function(){
-									// 	console.log('setTimeout started');
-									// 	return page.evaluate(function(){
-									// 		console.log('Start of eval');
-									// 		pageObj.desc = $('meta[name="description"]').attr('content');
-									// 		console.log('Grab description: ', pageObj);
-									// 	});
-									// }, 600);
-								});
-							ph.exit();
-							});
-						});
-					});
-			});
-		});
-		// webshot(url, imgPath, webshotOptions, function(err) {
-		// });
+		// 							page.includeJs("http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js", function(err) {
+		// 								console.log('jQuery included..');
+		// 								if ( err ) throw err;
+		// 								page.render(imgPath, function(err) {
+		// 									if ( err ) throw err;
+		// 									console.log('Taking webshot..');
+
+		// 									var imgOut = './img/' + url + '-resized.png';
+		// 									pageObj.imgOut = imgOut;
+
+		// 									gm(fs.createReadStream(imgPath), url + '.png').scale(155, 155).write(imgOut, function (err) {
+		// 										if (err) throw err;
+		// 										console.log('Resized from buffer.', pageObj);
+
+		// 										client.emit('resized', pageObj);
+		// 									});
+		// 								});
+		// 								// Eval not working
+		// 								// setTimeout(function(){
+		// 								// 	console.log('setTimeout started');
+		// 								// 	return page.evaluate(function(){
+		// 								// 		console.log('Start of eval');
+		// 								// 		pageObj.desc = $('meta[name="description"]').attr('content');
+		// 								// 		console.log('Grab description: ', pageObj);
+		// 								// 	});
+		// 								// }, 600);
+		// 						});
+		// 						ph.exit();
+		// 					});
+		// 				});
+		// 			});
+		// 		});
+		// 	});
+	});
 });

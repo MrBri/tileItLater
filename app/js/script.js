@@ -24,17 +24,17 @@ var urlCtrl = function($scope) {
 
 	$scope.setRmd = function(milli){
 		$scope.tile.cl = $scope.tile.url.slice(0, 4);
-		console.log($('.' + $scope.tile.cl).fadeIn('slow'));
+
 		$scope.tile.remind = Date.now() + milli;
 
 		socket.emit('capture', $scope.tile.url);
 
 		$scope.master.push(angular.copy($scope.tile));
-		setTimeout($scope.emphasize, 5000, $scope.tile.cl);
+		setTimeout($scope.emphasize, milli, $scope.tile.cl);
 	};
 
 	$scope.emphasize = function(elm){
-		$('.' + elm).effect({effect: 'bounce', duration: 1200, complete: function(){
+		$('.' + elm).effect({effect: 'bounce', duration: 1000, complete: function(){
 			$this = $(this);
 			setTimeout(function(){
 				$this.addClass('scale');
