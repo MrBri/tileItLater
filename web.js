@@ -1,5 +1,4 @@
 var fs = require('fs'),
-		// $ = require('jquery'),
 		// phantom = require('node-phantom'),
 		webshot = require('webshot'),
 		gm = require('gm'),
@@ -23,15 +22,8 @@ io.sockets.on('connection', function(client){
 		console.log("On capture ", url);
 
 		var webshotOptions = {
-		  screenSize: {
-		    width: 620,
-		    height: 620
-		  },
-		  shotSize: {
-		    width: 620,
-		    height: '620'
-		  }
-		  // userAgent: 'Mozilla/5.0 (iPhone; U; CPU iPhone OS 3_2 like Mac OS X; en-us) AppleWebKit/531.21.20 (KHTML, like Gecko) Mobile/7B298g'
+		  screenSize: {	width: 620, height: 620 },
+		  shotSize: { width: 620, height: '620' }
 		};
 
 		var pageObj = {};

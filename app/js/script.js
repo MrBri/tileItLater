@@ -1,6 +1,6 @@
 var socket = io.connect("http://localhost:3000");
 
-// Loading spinner
+// spinner to be used as jQuery
 $.fn.spin = function(opts) {
   this.each(function() {
     var $this = $(this),
