@@ -60,5 +60,5 @@ Technology used
 * Social features.
 * Grouping or Tags.
 * Marketing, SEO and [crawlable](https://developers.google.com/webmasters/ajax-crawling/docs/getting-started).
-____
+----
 Hire me? tyler@mrbri.com
