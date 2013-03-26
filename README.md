@@ -55,6 +55,7 @@ Technology used
 * Refactor to a more Angular way.
 * Grab a description or other details of a site.
 * Make data persistent. MongoDB? SQL? Amazon's [DynamoDB](http://aws.amazon.com/dynamodb/)? Redis? Parse?
+* [Isotope](http://isotope.metafizzy.co/) for cooler tiles!
 * Login system. OAuth?
 * Social features.
 * Grouping or Tags.
