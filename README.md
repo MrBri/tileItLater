@@ -5,27 +5,38 @@ A full stack bookmarking web application.
 
 Local install to see app run
 -----------------------------
-In your terminal with [git](http://git-scm.com/):  
+Requirements are [git](http://git-scm.com/), [NodeJS](http:/nodejs.org), [PhantomJS](http://phantomjs.org) and [GraphicsMagick](http://www.graphicsmagick). Suggested Mac install via [Homebrew](http://mxcl.github.com/homebrew/) and [NPM](https://npmjs.org/):  
+
+In the terminal install Homebrew:
+
+    ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
+Install packages via Homebrew:
+
+    brew install git node phantomjs graphicsmagick
+
+Clone this repository with git:  
 
     git clone https://github.com/MrBri/tileItLater.git
-Once cloned change to the directory:
+
+Install the dependencies with NodeJS:  
 
     cd tileItLater 
-Install the dependances with [node.js](http://nodejs.org/):  
-
     npm install
+
 Launch the server:  
 
     node web.js
+
 In your [browser](http://www.google.com/chrome/) go to:  
 
     localhost:3000
-**Give it a go!**
+**[Give it a go!](localhost:3000)**
 
 
 Walkthrough
 -----------
-* Paste or type in a url.
+* Paste or type in a url. (currently only works without http://)
 * Submit a remind time. (currently set to 5, 10 and 30 seconds for demo purposes)
 * App goes out and takes a screen shot. (thanks [PhantomJS](http://phantomjs.org))
 * The image is resized asynchronously. (thanks [GraphicsMagick](http://www.graphicsmagick))
@@ -52,6 +63,7 @@ Technology used
 
 **TODOs**
 * Host! I need a server with witch PhantomJS and GraphicsMagick utilities can be installed. Checking out Amazon's [Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/) and ssh into the [EC2](http://aws.amazon.com/ec2/) instance. Some other VPS?
+* Smart url parsing.
 * Refactor to a more Angular way.
 * Grab a description or other details of a site.
 * Make data persistent. MongoDB? SQL? Amazon's [DynamoDB](http://aws.amazon.com/dynamodb/)? Redis? Parse?
@@ -60,7 +72,9 @@ Technology used
 * Social features.
 * Grouping or Tags.
 * Marketing, SEO and [crawlable](https://developers.google.com/webmasters/ajax-crawling/docs/getting-started).
+* Package as node module for utility purposes.
 
 ----
 
-Hire me? tyler@mrbri.com
+Hire me? tyler@mrbri.com  
+[mrbri.com](http://mrbri.com)
