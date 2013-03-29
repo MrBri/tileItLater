@@ -1,5 +1,11 @@
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+
 Tile It Later
 =============
+- [Local install to see app run](#local-install-to-see-app-run)
+- [Walkthrough](#walkthrough)
+- [Technology used](#technology-used)
 
 A full stack bookmarking web application.  
 
