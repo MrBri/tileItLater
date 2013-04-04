@@ -1,13 +1,14 @@
-**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
 
-
-Tile It Later
+[Tile It Later](http://tileitlater.com)
 =============
+**[http://tileitlater.com](http://tileitlater.com)**
+
 - [Local install to see app run](#local-install-to-see-app-run)
 - [Walkthrough](#walkthrough)
 - [Technology used](#technology-used)
 
 A full stack bookmarking web application.  
+
 
 Local install to see app run
 -----------------------------
@@ -65,10 +66,14 @@ Technology used
 * [Font Awesome](http://fortawesome.github.com/Font-Awesome/) for those lovely icons.
 * [spin.js](http://fgnass.github.com/spin.js/) gotta have a loading spinner.
 
+**Host**
+* [Rackspace Cloud Server](http://www.rackspace.com/cloud/servers/) VPS using Ubuntu.
+* Custom installed NodeJS, PhantomJS and GraphicsMagick.
+* Initially gave runs with Amazon's [Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/) and [Heroku](https://www.heroku.com/). Heroku I found buildpacks but need something like S3 integration for image hosting. Amazon I wasn't moving fast enough to get into my EC2 instance to install what was needed.
+
 ----
 
 **TODOs**
-* Host! I need a server with witch PhantomJS and GraphicsMagick utilities can be installed. Checking out Amazon's [Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/) and ssh into the [EC2](http://aws.amazon.com/ec2/) instance. Some other VPS?
 * Smart url parsing.
 * Refactor to a more Angular way.
 * Grab a description or other details of a site.
