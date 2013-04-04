@@ -13,7 +13,7 @@
     "npm": "1.2.x"
   },
   "description": "Add a website to be reminded about later.",
-  "main": "web.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

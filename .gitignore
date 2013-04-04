@@ -1,6 +1,5 @@
-node_modules/
 .DS_Store
-img/.elasticbeanstalk/
+img/
 .gitignore
 .elasticbeanstalk/
 log/

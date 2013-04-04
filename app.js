@@ -9,6 +9,12 @@ var fs = require('fs'),
 
 server.listen(process.env.PORT || 3000);
 
+// Heroku cedar stack doesn't support WebSockets
+io.configure(function() {
+  io.set('transports', ['xhr-polling']);
+  io.set('polling duration', 10);
+});
+
 app.use(express.static(__dirname + '/app'));
 
 app.get('/img/:name', function(req, res){
